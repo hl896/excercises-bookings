@@ -36,7 +36,7 @@ export default class CreateUser extends Component {
             username: '',
             gender: '',
         })
-        axios.post('https://localhost:5000/users/add', newUser)
+        axios.post('https://localhost:63448/users/add', newUser)
             .then(res => console.log(res.data));
         window.location = '/userList';
     }

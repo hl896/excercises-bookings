@@ -18,7 +18,7 @@ export default class UsersList extends Component {
         this.state = {users: []};
     }
     componentDidMount() {
-        axios.get('https://localhost:5000/users/')
+        axios.get('https://localhost:63448/users/')
          .then(response => {
            this.setState({ users: response.data });
          })
@@ -27,7 +27,7 @@ export default class UsersList extends Component {
          })
     }
     deleteUser(id) {
-        axios.delete('https://localhost:5000/users/'+id)
+        axios.delete('https://localhost:63448/users/'+id)
           .then(res => console.log(res.data));
         this.setState({
           users: this.state.users.filter(el => el._id !== id)
