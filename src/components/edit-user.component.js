@@ -17,7 +17,7 @@ export default class EditUser extends Component {
   }
 
   componentDidMount() {
-    axios.get('http://excercises-booking.herokuapp.com/users/'+this.props.match.params.id)
+    axios.get('http://localhost:5000/users/'+this.props.match.params.id)
       .then(response => {
         this.setState({
           username: response.data.username,
@@ -28,7 +28,7 @@ export default class EditUser extends Component {
         console.log(error);
       })
 
-    axios.get('http://excercises-booking.herokuapp.com/users/')
+    axios.get('http://localhost:5000/users/')
       .then(response => {
         this.setState({ users: response.data.map(user => user.username) });
       })
@@ -60,7 +60,7 @@ export default class EditUser extends Component {
 
     console.log(user);
 
-    axios.post('http://excercises-booking.herokuapp.com/users/update/'+this.props.match.params.id, user)
+    axios.post('http://localhost:5000/users/update/'+this.props.match.params.id, user)
       .then(res => console.log(res.data));
     
     window.location = '/userList';
