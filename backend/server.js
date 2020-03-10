@@ -5,11 +5,11 @@ const mongoose = require(`mongoose`);
 require('dotenv').config();
 
 const app = express();
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 63448;
 
 app.use(cors());
 app.use(express.json());
-const uri = process.env.ATLAS_URI == "production" ? "https://excercises-booking.herokuapp.com" : "http://localhost:5000";
+const uri = process.env.ATLAS_URI == "production" ? "https://excercises-booking.herokuapp.com" : "http://localhost:63448";
 
 mongoose.connect(process.env.ATLAS_URI || uri, { useNewUrlParser: true, useCreateIndex: true }
 );
