@@ -9,6 +9,7 @@ import CreateExercise from "./components/create-exercise.component";
 import CreateUser from "./components/create-user.component";
 import UsersList from "./components/users-list.component";
 import EditUser from "./components/edit-user.component";
+import Search from './components/search.component';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
 
         <Route path="/userList" exact component={UsersList} />
         <Route path="/editUser/:id" component={EditUser} />
+        <Route path="/searchList" component={Search} />
       </div>
     </Router>
 

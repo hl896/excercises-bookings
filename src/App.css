@@ -36,3 +36,53 @@
     transform: rotate(360deg);
   }
 }
+
+
+body{
+  background:#c2c2af;
+}
+.APP{
+  background:#c2c2af;
+  
+}
+.search-form{
+  width:50%;
+  text-align: center;
+  margin: 0 auto 0 auto;
+}
+.fieldset{
+  width: 15%;
+  margin: 0 30px;
+  display: inline-block;
+}
+.foodGrid{
+  width: 80%;
+  margin: 0 30px;
+  display: inline-block;
+}
+.userList{
+
+}
+.recipeItem{
+  font-size: 11px;
+  display: inline-block;
+  width: 28%;
+  margin: 20px 0px;
+  overflow: hidden;
+}
+.recipeItem  img{
+  width:50%;
+  height: 50%;
+  margin:0 20px;
+}
+.rowItem {
+  display: inline-block;
+  
+  margin: 20px 0px;
+}
+hr{
+  width:100vw;
+}
+p{
+  font-size: 12px;
+}
