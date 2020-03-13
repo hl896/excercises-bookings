@@ -21,7 +21,8 @@ router.route('/add').post((req, res) => {
 
 module.exports = router;
 
-router.route('/:id').get((req, res) => {
+
+router.get('/:id', (req, res) => {
   User.findById(req.params.id)
     .then(users => res.json(users))
     .catch(err => res.status(400).json('Error: ' + err));
@@ -29,6 +30,7 @@ router.route('/:id').get((req, res) => {
 
 
 router.route('/update/:id').post((req, res) => {
+
   User.findById(req.params.id)
     .then(users => {
       users.username = req.body.username;
