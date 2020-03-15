@@ -1,4 +1,4 @@
-import React, {useState, useEffect, TableRow} from "react";
+import React, {useState, useEffect} from "react";
 import Recipe from  "./recipe.component";
 import '../App.css';
 import axios from 'axios';
@@ -12,6 +12,13 @@ import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 import clsx from 'clsx';
 import { Component } from "react";
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
 
 const useStyles = makeStyles({
     root: {
@@ -57,8 +64,8 @@ const useStyles = makeStyles({
 
 // Inspired by blueprintjs
 function StyledRadio(props) {
+    
     const classes = useStyles();
-  
     return (
       <Radio
         className={classes.root}
@@ -74,23 +81,27 @@ function StyledRadio(props) {
 const APP_ID = "69c97021";
 const APP_KEY = "aeb10d6b6fa84e615dc7361c08b1836f";
 
+
 class Search  extends Component {
+    
     constructor(props){
         super(props);
         this.state = {
             recipes:[],
             search: 'chicken',
             query: '',
-            users: '',
-            value: 'female',
+            value: ' ',
             user: []
         }
         this.getSearch = this.getSearch.bind();
         this.updateSearch = this.updateSearch.bind();
         this.handleChange = this.handleChange.bind();
         this.getRecipes = this.getRecipes.bind();
+
         
+     
     }
+    
     
     componentDidMount(){
         axios.get('http://localhost:63448/users/')
@@ -105,10 +116,11 @@ class Search  extends Component {
         console.log("users:"+ this.state.user);
         const query = this.state.search;
         this.getRecipes(query);
+        
+
     }
 
-    
-        
+       
     
     
   
@@ -162,7 +174,7 @@ class Search  extends Component {
                 <div>
                     <FormControl component="fieldset">
                         <FormLabel component="legend">All Users</FormLabel>
-                        <RadioGroup defaultValue="female" aria-label="gender" name="customized-radios" value={this.state.value} onChange={this.handleChange}>
+                        <RadioGroup aria-label="gender" name="customized-radios" value={this.state.value} onChange={this.handleChange}>
                             {this.state.user.map(usr =>(
                                 <FormControlLabel 
                                 value={usr.username}
@@ -184,8 +196,54 @@ class Search  extends Component {
                         ))}
                     </div>
                 </div>
+                <div>
+                    <SelectTable />
+                </div>
+
             </div>
         );
     }
   }
+function createData(username, name, method, calories) {
+    return { username, name, method, calories };
+}
+
+const rows = [
+    createData('user1', 'coke', 'cash', '1777kj'),
+    createData('user2', 'nooddles', 'cash', '1777kj'),
+    createData('user3', 'chicken', 'cash', '1777kj'),
+    createData('user4', 'cake', 'debit', '1777kj'),
+    createData('user5', 'buger', 'cash', '1777kj'),
+];
+function SelectTable() {
+    const classes = useStyles();
+    return (
+        <TableContainer component={Paper}>
+        <Table className={classes.table} aria-label="simple table">
+            <TableHead>
+            <TableRow>
+                <TableCell>UserName</TableCell>
+                <TableCell align="right">Name</TableCell>
+                <TableCell align="right">Method</TableCell>
+                <TableCell align="right">Calories&nbsp;(kj)</TableCell>
+            </TableRow>
+            </TableHead>
+            <TableBody>
+            {rows.map(row => (
+                <TableRow key={row.name}>
+                <TableCell component="th" scope="row">
+                    {row.username}
+                </TableCell>
+                <TableCell align="right">{row.name}</TableCell>
+                <TableCell align="right">{row.method}</TableCell>
+                <TableCell align="right">{row.calories}</TableCell>
+                </TableRow>
+            ))}
+            </TableBody>
+        </Table>
+        </TableContainer>
+    );
+}
+
+
 export default Search;

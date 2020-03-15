@@ -37,7 +37,6 @@ const Recipe = ({title, calories, image}) => {
                 <FormControl className={classes.formControl}>
                 <InputLabel htmlFor="grouped-native-select">Grouping</InputLabel>
                 <Select native defaultValue="" input={<Input id="grouped-native-select" />}  onChange={handleChange} value={method} >
-                    
                     <optgroup> 
                     <option value="none" >Selection</option>
                     <option value={cash}>Cash</option>

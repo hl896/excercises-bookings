@@ -9,9 +9,8 @@ const port = process.env.PORT || 63448;
 
 app.use(cors());
 app.use(express.json());
-const uri = process.env.ATLAS_URI == "production" ? "https://excercises-booking.herokuapp.com" : "http://localhost:63448";
 
-mongoose.connect(process.env.ATLAS_URI || uri, { useNewUrlParser: true, useCreateIndex: true }
+mongoose.connect(process.env.ATLAS_URI, { useNewUrlParser: true, useCreateIndex: true }
 );
 const connection = mongoose.connection;
 connection.once('open', () => {
