@@ -6,12 +6,13 @@ require('dotenv').config();
 
 const app = express();
 const port = process.env.PORT || 63448;
+const uri = 'mongodb://haoyangLi:519518lhy@ds263448.mlab.com:63448/heroku_fnq00qb5';
 
 app.use(cors());
 app.use(express.json());
-console.log(process.env.ATLAS_URI);
 
-mongoose.connect(process.env.ATLAS_URI, { useNewUrlParser: true, useCreateIndex: true }
+
+mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true }
 );
 const connection = mongoose.connection;
 connection.once('open', () => {
